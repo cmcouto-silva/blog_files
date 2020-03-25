@@ -1,11 +1,11 @@
-baseurl = "/"
+baseurl = "https://cmcouto-silva.github.io/"
 title = "cmcouto-silva"
 theme = "hugo-universal-theme"
 languageCode = "pt-br"
 # Site language. Available translations in the theme's `/i18n` directory.
 defaultContentLanguage = "pt-br"
 # Enable comments by entering your Disqus shortname
-disqusShortname = ""
+disqusShortname = "cmcoutosilva"
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = ""
 
@@ -77,10 +77,10 @@ paginate = 10
 
 [params]
     viewMorePostLink = "/blog/"
-    author = "DevCows"
-    defaultKeywords = ["devows", "hugo", "go"]
+    author = "Cainã Max Couto-Silva"
+    defaultKeywords = ["cmcouto-silva", "r", "python", "data science"]
     mainSections = ["blog"]
-    defaultDescription = "Site template made by devcows using hugo"
+    defaultDescription = "Blog pessoal"
 
     # Social media
     facebook_site = "cmcoutosilva" # the Facebook handle of your site ('https://www.facebook.com/HANDLE')

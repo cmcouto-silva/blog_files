@@ -209,7 +209,7 @@ Além do Brasil, aprensento os dados dos 10 países com maiores índices de caso
 totais e emergentes, <br>de COVID-19 no mundo:
 
 `r iframe("files/blog/codiv19_daily_update/central_south_america_map.html")`
-`r iframe("blog/codiv19_daily_update/top10_map.html")`
+`r iframe("files/blog/codiv19_daily_update/top10_map.html")`
 
 `r iframe("files/blog/codiv19_daily_update/top10_cases.html")`
 `r iframe("files/blog/codiv19_daily_update/top10_newcases.html")`
