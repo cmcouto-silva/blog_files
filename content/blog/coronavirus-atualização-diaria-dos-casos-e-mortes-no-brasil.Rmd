@@ -16,6 +16,10 @@ summary: >
   por meio de gráfico simples e interativos.
 ---
 
+```{r, echo=FALSE}
+pdf.options(encoding='ISOLatin2')
+```
+
 ```{r settings, echo=FALSE}
 library(reticulate)
 knitr::opts_knit$set(root.dir = "~/cmcouto.silva@usp.br/portfolio/blog")
