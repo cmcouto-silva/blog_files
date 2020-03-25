@@ -1,0 +1,8 @@
+# R
+*.Rproj
+.Rhistory
+.Rproj.user
+
+# Hugo
+public
+

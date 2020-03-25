@@ -1,0 +1,274 @@
+---
+title: Análise dos Planos de Governo de Bolsonaro e Haddad
+author: Cainã Max Couto-Silva
+date: '2018-10-27'
+slug: analise-planos-de-governo-bolsonaro-haddad
+categories:
+  - R
+tags:
+  - data mining
+  - política
+banner: "img/banners/wordcloud.png"
+summary: >
+  Comparação dos planos de Governo de Bolsonaro e Haddad via mineração de textos.
+---
+
+<meta property="og:image" content="https://cmcouto-silva.github.io/img/posts/planos_gov.png" />
+
+<style>
+
+body {
+text-align: justify
+}
+
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "~/cmcouto.silva@usp.br/portfolio/blog")
+```
+
+### Comparação dos planos de Governo de Jair Bolsonaro e Fernando Haddad\
+#### via Mineração de Textos
+
+&nbsp;
+
+E com um pouco mais de 24h antes de iniciar as eleições ─ segundo turno ─ eis que resolvi publicar este post.
+
+Dado a discrepância estética dos planos de Governo dos candidatos à presidência Jair Messias Bolsonaro e Fernando Haddad (vide figura 1), somado ao número um tanto quanto suspeitoso de páginas de ambos, resolvi aplicar a técnica de mineração de textos (do inglês, _data mining_) a fim de verificar se a quantidade de conteúdo condiz com o número de páginas.
+
+<!-- Insert figure 1 -->
+<div class="center" style="padding: 20px">
+<img src="/img/blog/planos_gov2018/planos_gov.png" width="800"><br>
+<figcaption>**Figura 1**. Sumário e primeira página de conteúdo dos planos de Governo dos canditatos.<br /><i>Obs: Não há sumário oficinal no plano de Governo do candidato Jair Bolsonaro*</i>.</figcaption>
+</div>
+
+Para isso, utilizei <a href="https://www.r-project.org/" target="_blank">**linguagem de programação R**</a> e pacotes específicos para mineração de textos disponíveis publicamente. Todos os códigos estão disponíveis neste post. Os links para os planos de Governo utilizados constam nas referências.
+
+Em suma, observa-se que o quantidade de páginas de longe condiz com a quantidade de palavras e caracteres em ambos os planos de Governo. Enquanto Jair Bolsonaro tem 81 páginas em seu plano, Fernando Haddad possui 61 páginas (fig. 2). Entretanto, as informações do plano de Governo do Bolsonaro não estão organizadas em estrutura de documento de texto, mas similar à uma apresentação feita em "Power Point", com grandes letras e espaçamentos, enquanto uma organização estruturada pode ser observada no plano de Governo do Haddad. 
+
+```{r, eval=TRUE, include=FALSE}
+# # Pacotes requeridos
+# library(data.table)
+# library(wordcloud)
+# library(pdftools)
+# library(magrittr)
+# library(ggplot2)
+# library(tm)
+# 
+# # Create directory for storing gov plans
+# dir.create("static/files/blog/planos_gov2018", F)
+# 
+# # download.file("http://flaviobolsonaro.com/PLANO_DE_GOVERNO_JAIR_BOLSONARO_2018.pdf",
+# #               "static/files/blog/planos_gov2018/plano_gov_bolsonaro.pdf")
+# bolsonaro <- pdf_text("static/blog/planos_gov2018/plano_gov_bolsonaro.pdf")
+# 
+# # download.file("http://www.pt.org.br/wp-content/uploads/2018/08/plano-de-governo_haddad-13_capas-1.pdf",
+# #               "static/files/blog/planos_gov2018/plano_gov_haddad.pdf")
+# haddad <- pdf_text("static/blog/planos_gov2018/plano_gov_haddad.pdf")
+# 
+# ## Adquirir o número de página de cada plano de proposta
+# bolsonaro_pags <- length(bolsonaro) # 81
+# haddad_pags <- length(haddad) # 61
+# 
+# # Remover palavras comuns não-desejadas para ambos os Planos de Governo
+# rm_words <- readLines("https://raw.githubusercontent.com/cmcouto-silva/data-mining-tools/master/words_pt.txt")
+# 
+# # "Limpeza" de texto
+# tm.text.clean <- function(corpus) {
+#   corpus <- removePunctuation(corpus)
+#   corpus <- stripWhitespace(corpus)
+#   corpus <- tolower(corpus)
+#   corpus <- trimws(corpus)
+#   
+#   return(corpus)
+# }
+# 
+# ## Adquirir o número de página de cada plano de proposta
+# bolsonaro_pags <- length(bolsonaro) # 81
+# haddad_pags <- length(haddad) # 61
+# 
+# # "Limpeza" de texto
+# tm.text.clean <- function(corpus) {
+#   corpus <- removePunctuation(corpus)
+#   corpus <- stripWhitespace(corpus)
+#   corpus <- tolower(corpus)
+#   corpus <- trimws(corpus)
+#   
+#   return(corpus)
+# }
+# 
+# # Bolsonaro
+# bolsonaro <- as.character(bolsonaro) %>% tm.text.clean()
+# bolsonaro <- gsub("^brasil acima de tudo deus acima de todos", "", bolsonaro)
+# bolsonaro <- gsub("[^\\w]bolsonaro2018$", "", bolsonaro)
+# bolsonaro <- paste(bolsonaro, collapse = "")
+# 
+# # Haddad
+# haddad <- paste(haddad, collapse = "")
+# 
+# # Removing special characters from both candidates
+# special_symbols <- c("-","–","─","•","●","\n")
+# 
+# for(symb in special_symbols) {
+#   bolsonaro <- gsub(symb, "", bolsonaro)
+#   haddad <- gsub(symb, "", haddad)
+# }
+# 
+# bolsonaro <- tm.text.clean(bolsonaro)
+# haddad <- tm.text.clean(haddad)
+# 
+# # Comparing number of characters
+# bolsonaro_nchar <- sum(nchar(bolsonaro)) # 49669
+# haddad_nchar <- sum(nchar(haddad)) # 201847
+# 
+# haddad_nchar_per_pg <- round( haddad_nchar/haddad_pags )
+# bolsonaro_nchar_per_pg <- round( bolsonaro_nchar/bolsonaro_pags )
+# 
+# # haddad_nchar_per_pg/bolsonaro_nchar_per_pg
+# 
+# # Removing "stopping words" to further analysis
+# bolsonaro <- tm::removeNumbers(bolsonaro) %>%
+#   removeWords(c(rm_words, tm::stopwords(kind = "pt"))) %>%
+#   stripWhitespace() # nchar = 37463
+# 
+# nchar(bolsonaro)
+# 
+# haddad <- tm::removeNumbers(haddad) %>%
+#   removeWords(c(rm_words, tm::stopwords(kind = "pt"))) %>%
+#   stripWhitespace() # nchar = 161771
+# 
+# nchar(haddad)
+# 
+# # Criando Matriz de contagem dos termos
+# corpus <- Corpus(VectorSource(c(bolsonaro, haddad)), readerControl = list(language = "pt"))
+# tdm <- TermDocumentMatrix(corpus) %>% as.matrix() %>% 
+#   set_colnames(c("Bolsonaro","Haddad"))
+# 
+# bolsonaro_palavras <- tdm[tdm[, 1] > 0L, 1] %>% sum
+# haddad_palavras <- tdm[tdm[, 2] > 0L, 2] %>% sum
+# 
+# m1 <- matrix(data = c(
+#   c(bolsonaro_pags*1000, bolsonaro_palavras*10, bolsonaro_nchar),
+#   c(haddad_pags*1000, haddad_palavras*10, haddad_nchar)), ncol = 3, byrow = T, 
+#   dimnames = list(colnames(tdm), c("Páginas * 1000", "Palavras", "Caracteres")))
+# 
+# # Bolsonaro
+# bolsonaro_freq_terms <- as.data.table(tdm[, 1], keep.rownames = T) %>%
+#   set_names(c("Term", "Freq"))
+# bolsonaro_freq_terms %<>% .[order(Freq, decreasing = T)]
+# 
+# # Haddad
+# haddad_freq_terms <- as.data.table(tdm[, 2], keep.rownames = T) %>%
+#   set_names(c("Term", "Freq"))
+# haddad_freq_terms %<>% .[order(Freq, decreasing = T)]
+# 
+# # Analisando palavras importantes no quesito governametal em ambos os planos de Governo
+# words <- c("educa","saúde","direit", "segurança", "política", "soci","economi", "empreg", "corrup", "ambient")
+# 
+# res <- sapply(words, function(w) {
+#   b <- bolsonaro_freq_terms[grep(w, Term), sum(Freq)] 
+#   h <- haddad_freq_terms[grep(w, Term), sum(Freq)] 
+#   list(Bolsonaro = b, Haddad = h)
+# }, simplify = T) %>% set_colnames(
+#   c("Educação", "Saúde", "Direitos", "Segurança", "Política", "Social", "Economia", "Emprego", "Corrupção", "Ambiente")
+# ) %>% .[, order(colnames(.))]
+# 
+# # alpha_order <- order(colnames(res))
+# # res <- res[, alpha_order]
+# m2 <- matrix(as.numeric(res), ncol = 10, byrow = F, dimnames = 
+#                list(c("Bolsonaro","Haddad"), colnames(res)))
+
+
+
+```
+
+Nas 81 páginas de Jair Bolsonaro, constam 4.100 palavras e 49.669 caracteres, enquanto nas 61 páginas do plano de Governo do Haddad, há 16.608 palavras, e 201.837 caracteres. Há aproximadamente 5-6 vezes mais caracteres por página no plano de Governo do Haddad do que no plano de Governo de Bolsonaro.
+
+&nbsp;
+
+```{r fig2, echo=FALSE, fig.align="center", fig.width=9}
+# # Plotando os gráficos
+# par(mfrow = c(1,3), oma = c(0,0,1,0), cex = 1, mar = c(0,4,8,0))
+# cores <- c(bolsonaro = "lightsteelblue", haddad = "indianred")
+# 
+# # Plotando os gráficos
+# par(mfrow = c(1,3), oma = c(0,1,2,1), cex = 1, mar = c(3,4,8,3))
+# cores <- c(bolsonaro = "lightsteelblue", haddad = "indianred")
+# 
+# barplot(m1[, 1], beside = T, col = cores, cex.axis = 1, ylab = "counts", cex.lab = 1, cex.main = 1, main="Número de páginas", cex.names = 0.75)
+# title("Número de páginas, palavras e caracteres em cada plano de Governo", outer = T, cex.main = 1.2)
+# abline(h = 0L)
+# 
+# barplot(m1[, 2], beside = T, col = cores, cex.axis = 1, cex.lab=1, cex.names = 0.75) 
+# title("Número de palavras", cex.main=1)
+# abline(h = 0L)
+# 
+# barplot(m1[, 3], beside = T, col = cores, cex.axis = 1, cex.lab=1, cex.names = 0.75)
+# title("Número de caracteres", cex.main=1)
+# abline(h = 0L)
+```
+
+<!-- Insert fig 2 -->
+<div class="center">
+<img src="/img/blog/planos_gov2018/fig2.png" width="800"><br>
+<figcaption>**Figura 2**. Quantidade de páginas, palavras e caracteres no plano de Governo de cada candidato.</figcaption>
+</div>
+
+&nbsp;
+
+Ao analisarmos quantas vezes aparecem as palavras-chave, essenciais aos planos de Governo, observa-se também uma discrepância entre ambos os planos. Uma séria de palavras foram analisadas conforme sua raiz, abrangendo, portanto, também seus derivados. As únicas palavras consideradas como um todo foram "saúde", "segurança", e "política".
+
+Todas as palavras e variações, exceto pelo termo "corrupção", foram muito mais frequentes no plano de Governo de Haddad. Particularmente, palavras referentes ao meio ambiente, direitos, educação, emprego, política, saúde, segurança e aspectos sociais aparecem todas com frequência de pelo menos duas vezes mais àquelas mencionadoas por Bolsonaro. Palavras condizentes à política aparecem com frequência superior à 22 vezes no plano de Haddad, comparado ao de Bolsonaro. Palavras e suas derivações praticamente não-citadas no plano de governo do Bolsonaro foram referentes às questões ambientais aos direitos. Contudo, a palavra "corrupção" aparece duas vezes a mais no plano de Jair Bolsonaro.
+
+```{r fig3, echo=FALSE, fig.align="center"}
+# Figura 3 
+# par(mfrow = c(1,1), oma = c(0,0,1,0), cex = 1, mar = c(2,0,0,0))
+# barplot(m2, beside = T, col = cores, ylim = c(0, max(m2)*1.1), border = T)
+# legend(x = 24, y = 270, legend = rownames(res), lwd = 4, lty = 1, col = cores)
+# abline(h = 0L)
+```
+
+<!-- Insert fig 3 -->
+<div class="center">
+<img src="/img/blog/planos_gov2018/fig3.png" width="800"><br>
+<figcaption>**Figura 3**. Frequência de palavras e suas derivações nos planos de Governo.</figcaption>
+</div>
+
+&nbsp;
+
+Por fim, as palavras mais frequentes (retirando-se preposições, advérbios e etc) podem ser observadas na figura abaixo. As palavras estão todas em letras minúsculas devido à execução das análises prévias.
+
+<!-- Insert figure 4 -->
+<div class="center">
+<img src="/img/blog/planos_gov2018/fig4.png" width="800"><br>
+<figcaption>**Figura 4**. Nuvem das 100 palavras mais frequentes em cada plano de Governo.</figcaption>
+</div>
+
+&nbsp;
+
+Evidentemente, não se deve atrelar o quanto ou não alguém tem de propostas com base apenas na quantidade de vezes que determinada palavra aparece no texto, há de se verificar o **contexto**. Há palavra que não tem associação direta com nenhuma proposta, que possui associação "boa" ou "ruim". Cabe a nós, portanto, utilizarmos o nosso "computador pessoal" que é o cérebro, para ler, processar e contextualizar as informações de ambos os planos de Governo. Lembre-se, também, que não se trata apenas de ti, mas de milhões de pessoas que vivem no Brasil.
+
+Por fim, conclui-se que, quando comparados os planos de Governo, a quantidade de páginas não condiz com a quantidade de conteúdo, havendo Haddad mais conteúdo em seu plano de Governo, apesar de menos páginas. A qualidade dos conteúdos, contudo, cabem à vocês ler e decidir :) 
+
+> Minha opinião pessoal: Deveríamos desconfiar de pouco conteúdo como proposta para uma nação, considerando o que há de fato é proposta e o que é enrrolação; somado ao fato de fugir dos debates em pleno período crítico de eleição, adquirir como estratégia o silêncio próprio e imposto à sua bancada política (como vice-presidente e o economista), desconfiem. No mais, do que foi falado já foi dito o suficiente. Att.,
+
+&nbsp;
+
+<div class="ref">
+
+#### Referências
+
+- [Plano de Governo do candidato Fernando Haddad  ](http://flaviobolsonaro.com/PLANO_DE_GOVERNO_JAIR_BOLSONARO_2018.pdf)  
+- [Plano de Governo do candidato Jair Bolsonaro  ](http://flaviobolsonaro.com/PLANO_DE_GOVERNO_JAIR_BOLSONARO_2018.pdf)  
+- [R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing.](https://www.R-project.org/)
+
+</div>
+
+#### Código
+
+O código deste post pode ser acessado [neste link](#).
+
+&nbsp;
+
+---
