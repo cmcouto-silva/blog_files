@@ -265,6 +265,6 @@ amr_newdeaths = amr_last_5days.iloc[amr_last_5days.new_deaths.argmax()][['País'
 
 &nbsp;
 
-O código deste post pode ser acessado através <a href="#" target="_blank">deste link</a> via github.
+O código deste post pode ser acessado através <a href="https://github.com/cmcouto-silva/blog_files/blob/master/content/blog/coronavirus-atualiza%C3%A7%C3%A3o-diaria-dos-casos-e-mortes-no-brasil.Rmd" target="_blank">deste link</a> via github.
 
 &nbsp;
