@@ -259,7 +259,7 @@ Por fim, conclui-se que, quando comparados os planos de Governo, a quantidade de
 
 #### Referências
 
-- [Plano de Governo do candidato Fernando Haddad  ](http://flaviobolsonaro.com/PLANO_DE_GOVERNO_JAIR_BOLSONARO_2018.pdf)  
+- [Plano de Governo do candidato Fernando Haddad  ](http://www.pt.org.br/wp-content/uploads/2018/08/plano-de-governo_haddad-13_capas-1.pdf)  
 - [Plano de Governo do candidato Jair Bolsonaro  ](http://flaviobolsonaro.com/PLANO_DE_GOVERNO_JAIR_BOLSONARO_2018.pdf)  
 - [R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing.](https://www.R-project.org/)
 
@@ -267,7 +267,7 @@ Por fim, conclui-se que, quando comparados os planos de Governo, a quantidade de
 
 #### Código
 
-O código deste post pode ser acessado [neste link](#).
+O código deste post pode ser acessado [neste link](https://github.com/cmcouto-silva/blog_files/blob/master/content/blog/analise-dos-planos-de-governo-de-bolsonaro-e-haddad.Rmd).
 
 &nbsp;
 

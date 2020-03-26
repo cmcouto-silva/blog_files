@@ -2,7 +2,7 @@
 title: "Coronavírus: Atualização diária dos casos e mortes no Brasil"
 author: Cainã Max Couto-Silva
 date: "`r Sys.Date()`"
-slug: "coronavirus-atualização-diaria-dos-casos-e-mortes-no-brasil"
+slug: "coronavirus-atualizacao-diaria-dos-casos-e-mortes-no-brasil"
 categories:
   - Python
   - Human Population

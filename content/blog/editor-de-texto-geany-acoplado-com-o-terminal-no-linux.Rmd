@@ -45,7 +45,7 @@ library(knitr)
 
 &nbsp;
 
-Geany é um editor de textos leve e rápido, capaz de carregar grandes arquivos de texto que outros editores usualmente não conseguem (e.g. Atom, Gedit, etc).
+<a href="https://www.geany.org/" target="_blank"><b>Geany</b></a> é um editor de textos leve e rápido, capaz de carregar grandes arquivos de texto que outros editores usualmente não conseguem (e.g. Atom, Gedit, etc).
 
 Neste tutorial, mostrarei como utilizar o Geany de forma integrada com o Terminal no Linux (mais especificamente, no Ubuntu) através de um processo fácil e que pode vir a ser bastante útil para algumas pessoas (meu próprio caso, por exemplo).
 

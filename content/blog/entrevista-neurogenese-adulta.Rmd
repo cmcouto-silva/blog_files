@@ -1,7 +1,7 @@
 ---
 title: "Entrevista: Neurogênese no cérebro adulto"
 author: Cainã Max Couto-Silva
-date: '2018-03-15'
+date: '2016-06-15'
 slug: entrevista-neurogenese-no-cerebro-adulto
 categories:
   - Neurociências
@@ -27,7 +27,7 @@ Eis uma simples entrevista de quando estava no mestrado, trabalhando com neuroci
 A descoberta da neurogênese, ou seja, a formação de novos neurônios, acontece inclusive na fase adulta de mamíferos, incluindo nos humanos. Contudo, ainda hoje existe um tabu sobre isso no ensino médio e às vezes também no ensino superior.
 
 <div style="blackground-color:#e5e5e5; padding:10px 0px 10px 0px;">
-A **neurogênese adulta** foi descoberta pelo **_Dr. Joseph Altman_** no início da década de 60, sendo amplamente aceita pela comunidade científica na década de 90. [**Neste post**](https://cmcouto-silva.github.io/blog/neurônios-novos-todos-os-dias) do blog eu conto um pouco de como foi sua descoberta.
+A **neurogênese adulta** foi descoberta pelo **_Dr. Joseph Altman_** no início da década de 60, sendo amplamente aceita pela comunidade científica na década de 90. [**Neste post**](https://cmcouto-silva.github.io/blog/neuronios-novos-todos-os-dias) do blog eu conto um pouco de como foi sua descoberta.
 </div>
 
 #### Abaixo, algumas referências para quem se interessar pelo assunto: <br><br>

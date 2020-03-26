@@ -1,8 +1,8 @@
 ---
 title: Neurônios novos todos os dias
 author: Cainã Max Couto-Silva
-date: '2018-03-01'
-slug: neurônios-novos-todos-os-dias
+date: '2016-06-01'
+slug: neuronios-novos-todos-os-dias
 categories:
   - Neurociências
 tags:

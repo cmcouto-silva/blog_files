@@ -1,8 +1,8 @@
 ---
 title: Genes sob seleção natural nos Andes
 author: Cainã Max Couto-Silva
-date: '2020-03-25'
-slug: genes-sob-seleção-natural-nos-andes
+date: '2018-09-24'
+slug: genes-sob-selecao-natural-nos-andes
 categories:
   - Pesquisa
 tags:
