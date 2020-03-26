@@ -16,12 +16,9 @@ summary: >
   por meio de gráfico simples e interativos.
 ---
 
-```{r, echo=FALSE}
-pdf.options(encoding='ISOLatin2')
-```
-
 ```{r settings, echo=FALSE}
 library(reticulate)
+invisible(Sys.setlocale(category = "LC_TIME", locale = "pt_BR.UTF-8"))
 knitr::opts_knit$set(root.dir = "~/cmcouto.silva@usp.br/portfolio/blog")
 iframe <- function(fig) {
   paste0('<iframe scrolling="no" width="100%" height="545px" src="/',
@@ -76,8 +73,8 @@ es = df_target[df_target.País=='Spain']
 br = br[br.Quantidade>0]
 es = es[es.Quantidade>0]
 
-tmp=locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
-tmp=locale.setlocale(locale.LC_TIME, "pt_BR.UTF-8")
+# tmp=locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+# tmp=locale.setlocale(locale.LC_TIME, "pt_BR.UTF-8")
 
 country = br
 
