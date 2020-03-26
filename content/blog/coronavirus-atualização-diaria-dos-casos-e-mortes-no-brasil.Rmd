@@ -18,7 +18,7 @@ summary: >
 
 ```{r settings, echo=FALSE}
 library(reticulate)
-# invisible(Sys.setlocale(category = "LC_ALL", locale = "pt_BR.UTF-8"))
+invisible(Sys.setlocale(category = "LC_ALL", locale = "pt_BR.UTF-8"))
 knitr::opts_knit$set(root.dir = "~/cmcouto.silva@usp.br/portfolio/blog")
 iframe <- function(fig) {
   paste0('<iframe scrolling="no" width="100%" height="545px" src="/',

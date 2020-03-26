@@ -2,6 +2,7 @@
 *.Rproj
 .Rhistory
 .Rproj.user
+.Rprofile
 
 # Hugo
 public
