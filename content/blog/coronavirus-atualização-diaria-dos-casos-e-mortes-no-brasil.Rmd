@@ -8,9 +8,9 @@ categories:
   - Human Population
 tags:
   - python
-  - codiv-19
+  - covid-19
   - coronavirus
-banner: img/banners/codiv19.png
+banner: img/banners/covid19.png
 summary: >
   Acompanhe aqui a atualização diária dos casos e mortes por COVID-19 no Brasil e no mundo,
   por meio de gráfico simples e interativos.
@@ -28,7 +28,7 @@ iframe <- function(fig) {
 
 ```{python html_dirs, echo=FALSE, engine.path = '/home/cmcouto-silva/miniconda3/bin/python'}
 from os import makedirs
-makedirs('static/files/blog/codiv19_daily_update', exist_ok=True)
+makedirs('static/files/blog/covid19_daily_update', exist_ok=True)
 ```
 
 ### Gráficos Interativos da Incidência de COVID-19 no Brasil
@@ -43,7 +43,7 @@ Post atualizado pela última vez em: ``` `r format(Sys.time(), "%d de %B de %Y, 
   
 &nbsp;
 
-```{python codiv19_brazil, echo=FALSE, engine.path = '/home/cmcouto-silva/miniconda3/bin/python'}
+```{python covid19_brazil, echo=FALSE, engine.path = '/home/cmcouto-silva/miniconda3/bin/python'}
 import locale
 import pandas as pd
 import plotly.io as pio
@@ -103,12 +103,12 @@ for i in range(len(fig.data)):
     fig.data[i]['hovertemplate'] = ''.join (
         ['<b>%{hovertext}<br></b>Categoria = ', fig.data[i]['name'], '<br>Quantidade = %{y:.i}'])
 
-pio.write_html(fig, file='static/files/blog/codiv19_daily_update/brazil.html', auto_open=False)
+pio.write_html(fig, file='static/files/blog/covid19_daily_update/brazil.html', auto_open=False)
 ```
 
-`r iframe('files/blog/codiv19_daily_update/brazil.html')`
+`r iframe('files/blog/covid19_daily_update/brazil.html')`
 
-```{python codiv19_world, echo=FALSE, engine.path = '/home/cmcouto-silva/miniconda3/bin/python'}
+```{python covid19_world, echo=FALSE, engine.path = '/home/cmcouto-silva/miniconda3/bin/python'}
 top10_cases = df.groupby('País').max().sort_values('total_cases', ascending=False).index[:10]
 top10_newcases = df.groupby('País').max().sort_values('new_cases', ascending=False).index[:10]
 top10_deaths = df.groupby('País').max().sort_values('total_deaths', ascending=False).index[:10]
@@ -165,10 +165,10 @@ top10_newdeaths = plt_top10(top10_newdeaths, 'new_deaths',
           title='Países com maiores quantidades NOVOS casos de mortes')
 
 
-pio.write_html(top10_cases, file = 'static/files/blog/codiv19_daily_update/top10_cases.html', auto_open=False)
-pio.write_html(top10_newcases, file = 'static/files/blog/codiv19_daily_update/top10_newcases.html', auto_open=False)
-pio.write_html(top10_deaths, file = 'static/files/blog/codiv19_daily_update/top10_deaths.html', auto_open=False)
-pio.write_html(top10_newdeaths, file = 'static/files/blog/codiv19_daily_update/top10_newdeaths.html', auto_open=False)
+pio.write_html(top10_cases, file = 'static/files/blog/covid19_daily_update/top10_cases.html', auto_open=False)
+pio.write_html(top10_newcases, file = 'static/files/blog/covid19_daily_update/top10_newcases.html', auto_open=False)
+pio.write_html(top10_deaths, file = 'static/files/blog/covid19_daily_update/top10_deaths.html', auto_open=False)
+pio.write_html(top10_newdeaths, file = 'static/files/blog/covid19_daily_update/top10_newdeaths.html', auto_open=False)
 
 df_map = df.groupby('País', as_index=False).max().rename({'total_cases':'Totalidade de casos'}, axis=1)
 fig = px.choropleth(df_map, locations="País", locationmode='country names',
@@ -180,7 +180,7 @@ fig.layout.coloraxis.colorbar.title.text = '' #'<b>Totalidade de casos</b>'
 fig.layout.title= '<b>Totalidade de casos no mundo</b>'
 fig = fig.update_layout(title_x=0.1)
 
-pio.write_html(fig, file = 'static/files/blog/codiv19_daily_update/top10_map.html', auto_open=False)
+pio.write_html(fig, file = 'static/files/blog/covid19_daily_update/top10_map.html', auto_open=False)
 
 south_america = ['Argentina', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Ecuador', 'Guyana', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Venezuela']
 central_america = ['Panama', 'Costa Rica', 'Nicaragua', 'Honduras', 'El Salvador', 'Guatemala', 'Belize']
@@ -199,7 +199,7 @@ fig.layout.title= '<b>Totalidade de casos na América Latina</b>'
 fig = fig.update_layout(title_x=0.48)
 fig = fig.update_geos(lataxis_range=[-55, 25], lonaxis_range=[-120, -30])
 
-pio.write_html(fig, file = 'static/files/blog/codiv19_daily_update/central_south_america_map.html', auto_open=False)
+pio.write_html(fig, file = 'static/files/blog/covid19_daily_update/central_south_america_map.html', auto_open=False)
 ```
 
 &nbsp;
@@ -209,15 +209,15 @@ pio.write_html(fig, file = 'static/files/blog/codiv19_daily_update/central_south
 Além do Brasil, aprensento os dados dos 10 países com maiores índices de casos e mortes,
 totais e emergentes, <br>de COVID-19 no mundo:
 
-`r iframe("files/blog/codiv19_daily_update/central_south_america_map.html")`
-`r iframe("files/blog/codiv19_daily_update/top10_map.html")`
+`r iframe("files/blog/covid19_daily_update/central_south_america_map.html")`
+`r iframe("files/blog/covid19_daily_update/top10_map.html")`
 
-`r iframe("files/blog/codiv19_daily_update/top10_cases.html")`
-`r iframe("files/blog/codiv19_daily_update/top10_newcases.html")`
-`r iframe("files/blog/codiv19_daily_update/top10_deaths.html")`
-`r iframe("files/blog/codiv19_daily_update/top10_newdeaths.html")`
+`r iframe("files/blog/covid19_daily_update/top10_cases.html")`
+`r iframe("files/blog/covid19_daily_update/top10_newcases.html")`
+`r iframe("files/blog/covid19_daily_update/top10_deaths.html")`
+`r iframe("files/blog/covid19_daily_update/top10_newdeaths.html")`
 
-```{python codiv19_conclusions, echo=FALSE, engine.path = '/home/cmcouto-silva/miniconda3/bin/python'}
+```{python covid19_conclusions, echo=FALSE, engine.path = '/home/cmcouto-silva/miniconda3/bin/python'}
 # World
 world_maior_incidencia = df.iloc[df.total_cases.argmax()][['País', 'total_cases']]
 world_maior_mortalidade = df.iloc[df.total_deaths.argmax()][['País', 'total_deaths']]
@@ -245,23 +245,23 @@ amr_newdeaths = amr_last_5days.iloc[amr_last_5days.new_deaths.argmax()][['País'
 &nbsp;
 
 #### Mundo
-- País com maior incidência de CODIV-19 no mundo:
+- País com maior incidência de COVID-19 no mundo:
 ````r py$world_maior_incidencia[1]` (n=`r format(py$world_maior_incidencia[2], scientific=F)`)```.
-- País com mais novos casos de CODIV-19 nos últimos 5 dias:
+- País com mais novos casos de COVID-19 nos últimos 5 dias:
 ````r py$world_newcases[1]` (n=`r format(py$world_newcases[2], scientific=F)`)```.
-- País com maior número absoluto de morte em pessoas diagnósticadas com CODIV-19:
+- País com maior número absoluto de morte em pessoas diagnósticadas com COVID-19:
 ````r py$world_maior_mortalidade[1]` (n=`r format(py$world_maior_mortalidade[2], scientific=F)`)```.
-- País com mais novos casos de morte em pessoas diagnósticadas com CODIV-19 nos últimos 5 dias:
+- País com mais novos casos de morte em pessoas diagnósticadas com COVID-19 nos últimos 5 dias:
 ````r py$world_newdeaths[1]` (n=`r format(py$world_newdeaths[2], scientific=F)`)```.
 
 #### Américas Central e do Sul
-- País latino com maior incidência de CODIV-19:
+- País latino com maior incidência de COVID-19:
 ````r py$amr_maior_incidencia[1]` (n=`r format(py$amr_maior_incidencia[2], scientific=F)`)```.
-- País latino com mais novos casos de CODIV-19 nos últimos 5 dias:
+- País latino com mais novos casos de COVID-19 nos últimos 5 dias:
 ````r py$amr_newcases[1]` (n=`r format(py$amr_newcases[2], scientific=F)`)```.
-- País latino com maior número absoluto de morte em pessoas diagnósticadas com CODIV-19:
+- País latino com maior número absoluto de morte em pessoas diagnósticadas com COVID-19:
 ````r py$amr_maior_mortalidade[1]` (n=`r format(py$amr_maior_mortalidade[2], scientific=F)`)```.
-- País latino com mais novos casos de morte em pessoas diagnósticadas com CODIV-19 nos últimos 5 dias:
+- País latino com mais novos casos de morte em pessoas diagnósticadas com COVID-19 nos últimos 5 dias:
 ````r py$amr_newdeaths[1]` (n=`r format(py$amr_newdeaths[2], scientific=F)`)```.
 
 &nbsp;
