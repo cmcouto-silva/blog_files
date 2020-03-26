@@ -39,7 +39,7 @@ Este é um post informativo sobre a incidência de coronavírus no Brasil, cujos
 
 Os gráficos e as datas são gerados de forma automática através do download dos dados da OMS. Todos os gráficos deste post são interativos, portanto,  pode-se, por exemplo, desativar dados clicando nas legendas, e ampliar os gráficos.
 
-Post atualizado pela última vez em: ```r format(Sys.time(), "%d de %B de %Y, %H:%Mh (Horário de Brasília ─  UTC-3)")```.
+Post atualizado pela última vez em: ``` `r format(Sys.time(), "%d de %B de %Y, %H:%M")`h (Horário de Brasília - UTC-3))```.
   
 &nbsp;
 
