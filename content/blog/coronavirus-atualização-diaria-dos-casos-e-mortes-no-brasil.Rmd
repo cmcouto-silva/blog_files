@@ -178,6 +178,7 @@ fig = px.choropleth(df_map, locations="País", locationmode='country names',
 fig.data[0].hovertemplate = '<b>%{hovertext}</b><br>%{z}'
 fig.layout.coloraxis.colorbar.title.text = '' #'<b>Totalidade de casos</b>'
 fig.layout.title= '<b>Totalidade de casos no mundo</b>'
+fig.layout.title.font.size=21
 fig = fig.update_layout(title_x=0.1)
 
 pio.write_html(fig, file = 'static/files/blog/covid19_daily_update/top10_map.html', auto_open=False)
