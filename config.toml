@@ -19,7 +19,7 @@ paginate = 10
 
 # Main menu
 
-[[menu.main]]
+[[menu  .main]]
     identifier="home"
     name = "Home"
     url  = "/"

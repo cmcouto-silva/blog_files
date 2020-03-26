@@ -248,11 +248,11 @@ amr_newdeaths = amr_last_5days.iloc[amr_last_5days.new_deaths.argmax()][['País'
 - País com maior incidência de CODIV-19 no mundo:
 ````r py$world_maior_incidencia[1]` (n=`r format(py$world_maior_incidencia[2], scientific=F)`)```.
 - País com mais novos casos de CODIV-19 nos últimos 5 dias:
-````r py$world_maior_incidencia[1]` (n=`r format(py$world_maior_incidencia[2], scientific=F)`)```.
+````r py$world_newcases[1]` (n=`r format(py$world_newcases[2], scientific=F)`)```.
 - País com maior número absoluto de morte em pessoas diagnósticadas com CODIV-19:
-````r py$world_maior_incidencia[1]` (n=`r format(py$world_maior_incidencia[2], scientific=F)`)```.
+````r py$world_maior_mortalidade[1]` (n=`r format(py$world_maior_mortalidade[2], scientific=F)`)```.
 - País com mais novos casos de morte em pessoas diagnósticadas com CODIV-19 nos últimos 5 dias:
-````r py$world_maior_incidencia[1]` (n=`r format(py$world_maior_incidencia[2], scientific=F)`)```.
+````r py$world_newdeaths[1]` (n=`r format(py$world_newdeaths[2], scientific=F)`)```.
 
 #### Américas Central e do Sul
 - País latino com maior incidência de CODIV-19:
