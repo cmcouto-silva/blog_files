@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Get to the blog directory
+cd ~/cmcouto.silva@usp.br/portfolio/blog
+
 ## Update website
 R -e 'blogdown::build_site()'
 
@@ -21,3 +24,4 @@ git add .
 git commit -m'daily update'
 # pushing modification to github
 git push origin master
+
