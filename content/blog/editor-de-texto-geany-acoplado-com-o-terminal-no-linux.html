@@ -16,24 +16,6 @@ summary: >
   (mais especificamente, no Ubuntu) através de um processo muito simples.
 ---
 
----
-title: Editor de Texto (Geany) Acoplado com o Terminal no Linux
-author: Cainã Max Couto-Silva
-date: '2018-06-18'
-slug: editor-de-texto-geany-acoplado-com-o-terminal-no-linux
-categories:
-  - Linux
-tags:
-  - Ubuntu
-  - Terminal
-  - Editor de texto
-banner: "img/banners/geany.png"
-summary: >
-  Geany é um editor de texto extremamente leve e veloz, o que o torna muito prático.
-  Neste tutorial, mostrarei como integrar o Geany com o Terminal no Linux 
-  (mais especificamente, no Ubuntu) através de um processo muito simples.
----
-
 
 
 <meta property="og:image" content="https://cmcouto-silva.github.io/img/banners/geany.png" />
@@ -93,21 +75,19 @@ sudo apt install geany-plugins -y</code></pre>
 <strong>Figura 3.</strong> Adicione/altere o shortcut para enviar o texto selecionado no editor, diretamente para o Terminal.
 </figcaption>
 </div>
-<p>Agora, digitando um comando no editor de texto e apertando “Ctrl + Enter”, o comando será enviado para o terminal que está conectado ao editor, porém, ainda não será executado, cabendo a nós ir para a sessão do terminal e executar lá. Para muitos, imagino, esse comportamento não seja satisfatório, sendo muito melhor que o comando enviado para o terminal seja prontamente executado no terminal. Podemos alterar esse comportamento no arquivo <em>.config</em>, usualmente localizado na pasta <strong><em>.Geany</em></strong>, criada automaticamente dentro da pasta usuário <code>&quot;~/.Geany/.config/geany_config&quot;</code>. Devemos alterar o padrão “send_selea adquirir um conjunto adicional de layouts para o editor Geany, podemos baixá-los via GitHub e torná-los disponíveis com os comandos:</p>
+<p>Agora, digitando um comando no editor de texto e apertando “Ctrl + Enter”, o comando será enviado para o terminal que está conectado ao editor, porém, ainda não será executado, cabendo a nós ir para a sessão do terminal e executar lá. Para muitos, imagino, esse comportamento não seja satisfatório, sendo muito melhor que o comando enviado para o terminal seja prontamente executado no terminal. Podemos alterar esse comportamento no arquivo <em>.config</em>, usualmente localizado na pasta <strong><em>.Geany</em></strong>, criada automaticamente dentro da pasta usuário <code>&quot;~/.Geany/.config/geany_config&quot;</code>. Devemos alterar o padrão “send_selection_unsafe=false” para “true”, e podemos fazer isso utilizando o seguinte comando:</p>
+<pre class="bash"><code>sed -i &quot;s/send_selection_unsafe=false/send_selection_unsafe=true/&quot; ~/.config/geany/geany.conf</code></pre>
+<p> </p>
+<p>Pronto! Agora tens um editor de texto com interface gráfica que é leve, suficientemente veloz, e prontamente integrado com o terminal para o ambiente Linux. Bom proveito =)</p>
+<hr />
+<div style="background-color: #cecece; padding: 10px 30px">
+<h3 id="bonus">Bonus !</h3>
+<hr />
+<p>Para adquirir um conjunto adicional de layouts para o editor Geany, podemos baixá-los via GitHub e torná-los disponíveis com os comandos:</p>
 <pre class="bash"><code>git clone https://github.com/geany/geany-themes
 sudo cp geany-themes/colorschemes/*.conf /usr/share/geany/colorschemes/
 rm -rf geany-themes</code></pre>
 <br>Para modificar o layout, basta abrir o Geany, acessar via “<em>View &gt; Change Color Scheme</em>”. Eu, por exemplo, gosto do tema “GitHub” para meu editor Geany, e consigo configurá-lo também via linha de comando, assim:
-<p style="text-align: center; padding: 10px;">
-<code>sed -i 's/color_scheme=.*/color_scheme=github.conf/' ~/.config/geany/geany.conf</code>.
-</p>
-</div>
-<p><br></p>
-<p>Neste tutorial foi utilizado Ubuntu 18.04 LTS como sistema operacional, porém muito provavelmente também funcionará em outras versões e sistemas Linux. No caso de outros sistemas operacionais, verifique se é necessário ajustar o <strong>caminho/<em>path</em></strong> dos comandos mostrados neste tutorial.<br /></p>
-<p> </p>
-<p>Abraços,</p>
-</div>
-do, assim:
 <p style="text-align: center; padding: 10px;">
 <code>sed -i 's/color_scheme=.*/color_scheme=github.conf/' ~/.config/geany/geany.conf</code>.
 </p>
