@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm content/blog/coronavirus-atualização-diaria-dos-casos-e-mortes-no-brasil.html
+
 ## Update website
 R -e 'blogdown::build_site()'
 
