@@ -1,11 +1,11 @@
 baseurl = "https://cmcouto-silva.github.io/"
-title = "cmcouto-silva"
+title = "cmcouto-silva@github.io"
 theme = "hugo-universal-theme"
 languageCode = "pt-br"
 # Site language. Available translations in the theme's `/i18n` directory.
 defaultContentLanguage = "pt-br"
 # Enable comments by entering your Disqus shortname
-disqusShortname = "cmcouto-silva.github.io"
+disqusShortname = "cmcoutosilva"
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = "UA-59149558-2"
 

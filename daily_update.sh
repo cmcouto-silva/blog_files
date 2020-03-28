@@ -21,4 +21,3 @@ git add .
 git commit -m'daily update'
 # pushing modification to github
 git push origin master
-
