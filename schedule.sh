@@ -4,4 +4,4 @@ for h in {06..23}; do
 done
 
 at 00:00 -f ./daily_update.sh
-at 00:00 -f ./schedule.sh
+at 00:01 -f ./schedule.sh
