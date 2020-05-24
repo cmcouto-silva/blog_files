@@ -1,0 +1,27 @@
+---
+title: Test_html
+author: Cainã Max Couto-Silva
+date: '2020-05-23'
+slug: test-html
+categories: []
+tags: []
+draft: true
+---
+
+Test
+
+```{python, engine.path = '/home/cmcouto-silva/miniconda3/bin/python'}
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+import plotly.express as px
+
+x = range(100)
+y = range(100)
+
+fig = px.scatter(x=x, y=y)
+fig.show('iframe')
+
+```
+
+end

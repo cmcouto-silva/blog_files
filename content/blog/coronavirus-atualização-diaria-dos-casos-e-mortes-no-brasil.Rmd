@@ -73,9 +73,6 @@ es = df_target[df_target.País=='Spain']
 br = br[br.Quantidade>0]
 es = es[es.Quantidade>0]
 
-# tmp=locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
-# tmp=locale.setlocale(locale.LC_TIME, "pt_BR.UTF-8")
-
 country = br
 
 if(country.País.unique()=='Brazil'):
@@ -92,7 +89,7 @@ fig = px.scatter(country, x='Data', y='Quantidade', color="Categoria", template=
                  color_discrete_sequence = ["#1f78b4", "#ff0000"])
 
 fig = fig.update_traces(mode='lines+markers', line_width=3, marker_size=10)
-fig = fig.update_xaxes(title=None, tickangle=-90, tickvals=tick_vals, ticktext=tick_labels)
+fig = fig.update_xaxes(title=None)#, tickangle=-90, tickvals=tick_vals, ticktext=tick_labels)
 fig = fig.update_yaxes(title=None)
 fig = fig.update_xaxes(showgrid=True)
 fig = fig.update_yaxes(showgrid=True)
