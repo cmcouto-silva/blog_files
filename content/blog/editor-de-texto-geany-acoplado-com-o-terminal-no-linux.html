@@ -16,6 +16,7 @@ summary: >
   (mais especificamente, no Ubuntu) através de um processo muito simples.
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <meta property="og:image" content="https://cmcouto-silva.github.io/img/banners/geany.png" />
@@ -50,7 +51,7 @@ sudo apt install geany geany-xterm -y</code></pre>
 <pre class="bash"><code>sudo apt update
 sudo apt install geany-plugins -y</code></pre>
 <p> </p>
-<p>Feito isso, basta abrir o editor Geany e clicar com o botão direito do mouse no terminal, e selecionar a opção “preferências” (fig. 1). Recomendo ativar também outras opções, conforme ilustrado na figura 2.</p>
+<p>Feito isso, basta abrir o editor Geany e clicar com o botão direito do mouse no terminal, e selecionar a opção “preferências” (fig. 1). Recomendo ativar também outras opções, conforme ilustrado na figura 2.</p>
 <div class="center">
 <img src="/img/blog/geany_plus_terminal/fig1.png" width="848"><br>
 <figcaption>
@@ -67,7 +68,7 @@ sudo apt install geany-plugins -y</code></pre>
 <blockquote>
 <p>Edit &gt; Preferências &gt; Keybindigs &gt; send to terminal</p>
 </blockquote>
-<p>A opção “send to terminal”&quot; fica dentro da ação “Format”, conforme ilustrado na figura 3. Selecione-a e, em seguida, clique no botão “change” para adicionar/alterar o comando desejado, que será responsável por enviar o texto da linha (ou seleção) do editor de texto para o terminal.</p>
+<p>A opção “send to terminal”" fica dentro da ação “Format”, conforme ilustrado na figura 3. Selecione-a e, em seguida, clique no botão “change” para adicionar/alterar o comando desejado, que será responsável por enviar o texto da linha (ou seleção) do editor de texto para o terminal.</p>
 <p>No meu caso, configurei para a combinação das teclas “Ctrl + Enter”, que fica registrado como “&lt;<em>Primary</em>&gt; <em>Return</em>”.</p>
 <div class="center">
 <img src="/img/blog/geany_plus_terminal/fig3.png" width="748"><br>
@@ -75,13 +76,13 @@ sudo apt install geany-plugins -y</code></pre>
 <strong>Figura 3.</strong> Adicione/altere o shortcut para enviar o texto selecionado no editor, diretamente para o Terminal.
 </figcaption>
 </div>
-<p>Agora, digitando um comando no editor de texto e apertando “Ctrl + Enter”, o comando será enviado para o terminal que está conectado ao editor, porém, ainda não será executado, cabendo a nós ir para a sessão do terminal e executar lá. Para muitos, imagino, esse comportamento não seja satisfatório, sendo muito melhor que o comando enviado para o terminal seja prontamente executado no terminal. Podemos alterar esse comportamento no arquivo <em>.config</em>, usualmente localizado na pasta <strong><em>.Geany</em></strong>, criada automaticamente dentro da pasta usuário <code>&quot;~/.Geany/.config/geany_config&quot;</code>. Devemos alterar o padrão “send_selection_unsafe=false” para “true”, e podemos fazer isso utilizando o seguinte comando:</p>
+<p>Agora, digitando um comando no editor de texto e apertando “Ctrl + Enter”, o comando será enviado para o terminal que está conectado ao editor, porém, ainda não será executado, cabendo a nós ir para a sessão do terminal e executar lá. Para muitos, imagino, esse comportamento não seja satisfatório, sendo muito melhor que o comando enviado para o terminal seja prontamente executado no terminal. Podemos alterar esse comportamento no arquivo <em>.config</em>, usualmente localizado na pasta <strong><em>.Geany</em></strong>, criada automaticamente dentro da pasta usuário <code>"~/.Geany/.config/geany_config"</code>. Devemos alterar o padrão “send_selection_unsafe=false” para “true”, e podemos fazer isso utilizando o seguinte comando:</p>
 <pre class="bash"><code>sed -i &quot;s/send_selection_unsafe=false/send_selection_unsafe=true/&quot; ~/.config/geany/geany.conf</code></pre>
 <p> </p>
 <p>Pronto! Agora tens um editor de texto com interface gráfica que é leve, suficientemente veloz, e prontamente integrado com o terminal para o ambiente Linux. Bom proveito =)</p>
 <hr />
-<div style="background-color: #cecece; padding: 10px 30px">
-<h3 id="bonus">Bonus !</h3>
+<div id="bonus" class="section level3" style="background-color: #cecece; padding: 10px 30px">
+<h3>Bonus !</h3>
 <hr />
 <p>Para adquirir um conjunto adicional de layouts para o editor Geany, podemos baixá-los via GitHub e torná-los disponíveis com os comandos:</p>
 <pre class="bash"><code>git clone https://github.com/geany/geany-themes

@@ -13,6 +13,7 @@ summary: >
   Comparação dos planos de Governo de Bolsonaro e Haddad via mineração de textos.
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <meta property="og:image" content="https://cmcouto-silva.github.io/img/posts/planos_gov.png" />
@@ -39,7 +40,7 @@ text-align: justify
 </figcaption>
 </div>
 <p>Para isso, utilizei <a href="https://www.r-project.org/" target="_blank"><strong>linguagem de programação R</strong></a> e pacotes específicos para mineração de textos disponíveis publicamente. Todos os códigos estão disponíveis neste post. Os links para os planos de Governo utilizados constam nas referências.</p>
-<p>Em suma, observa-se que o quantidade de páginas de longe condiz com a quantidade de palavras e caracteres em ambos os planos de Governo. Enquanto Jair Bolsonaro tem 81 páginas em seu plano, Fernando Haddad possui 61 páginas (fig. 2). Entretanto, as informações do plano de Governo do Bolsonaro não estão organizadas em estrutura de documento de texto, mas similar à uma apresentação feita em “Power Point”, com grandes letras e espaçamentos, enquanto uma organização estruturada pode ser observada no plano de Governo do Haddad.</p>
+<p>Em suma, observa-se que o quantidade de páginas de longe condiz com a quantidade de palavras e caracteres em ambos os planos de Governo. Enquanto Jair Bolsonaro tem 81 páginas em seu plano, Fernando Haddad possui 61 páginas (fig. 2). Entretanto, as informações do plano de Governo do Bolsonaro não estão organizadas em estrutura de documento de texto, mas similar à uma apresentação feita em “Power Point”, com grandes letras e espaçamentos, enquanto uma organização estruturada pode ser observada no plano de Governo do Haddad.</p>
 <p>Nas 81 páginas de Jair Bolsonaro, constam 4.100 palavras e 49.669 caracteres, enquanto nas 61 páginas do plano de Governo do Haddad, há 16.608 palavras, e 201.837 caracteres. Há aproximadamente 5-6 vezes mais caracteres por página no plano de Governo do Haddad do que no plano de Governo de Bolsonaro.</p>
 <p> </p>
 <!-- Insert fig 2 -->
@@ -75,8 +76,9 @@ text-align: justify
 <p>Minha opinião pessoal: Deveríamos desconfiar de pouco conteúdo como proposta para uma nação, considerando o que há de fato é proposta e o que é enrrolação; somado ao fato de fugir dos debates em pleno período crítico de eleição, adquirir como estratégia o silêncio próprio e imposto à sua bancada política (como vice-presidente e o economista), desconfiem. No mais, do que foi falado já foi dito o suficiente. Att.,</p>
 </blockquote>
 <p> </p>
-<div class="ref">
-<h4 id="referências">Referências</h4>
+</div>
+<div id="referências" class="section level4 ref">
+<h4>Referências</h4>
 <ul>
 <li><a href="http://www.pt.org.br/wp-content/uploads/2018/08/plano-de-governo_haddad-13_capas-1.pdf">Plano de Governo do candidato Fernando Haddad</a><br />
 </li>
@@ -84,7 +86,6 @@ text-align: justify
 </li>
 <li><a href="https://www.R-project.org/">R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing.</a></li>
 </ul>
-</div>
 </div>
 <div id="código" class="section level4">
 <h4>Código</h4>
